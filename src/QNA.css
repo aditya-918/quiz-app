@@ -1,0 +1,40 @@
+.container{
+    border: 1px solid lightgray;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 67px;
+    padding: 30px;
+    height: 250px;
+    text-align: center;
+}
+
+.qna_submit {
+    background-color: black;
+    margin-top: 20px;
+    color: white;
+    border: none;
+    padding: 12px;
+
+}
+
+.container > h1{
+    color: black;
+}
+
+.input_qna{
+    display: flex;
+    flex-direction: column;
+}
+
+.add_q{
+    padding: 6px;
+    margin-top: 5px;
+}
+
+.add_a{
+    padding: 6px;
+}
+
+.select_sections{
+    margin-top: 5px;
+}
