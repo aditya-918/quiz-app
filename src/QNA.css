@@ -10,7 +10,6 @@
 
 .qna_submit {
     background-color: black;
-    margin-top: 20px;
     color: white;
     border: none;
     padding: 12px;
@@ -28,13 +27,18 @@
 
 .add_q{
     padding: 6px;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .add_a{
     padding: 6px;
+    margin-top: 10px;
 }
 
 .select_sections{
-    margin-top: 5px;
+    /* margin-top: 5px; */
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

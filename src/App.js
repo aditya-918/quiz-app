@@ -3,11 +3,14 @@ import './App.css';
 import Navbar from './Navbar';
 import QNA from './QNA';
 import Home from './Home'
-import Ancient from './Ancient';
+import Ancient from './pages/Ancient';
 import Login from './login/Login';
 import Register from './login/Register';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import { auth } from './firebase';
+import Medieval from './pages/Medieval';
+import Polity from './pages/Polity';
+import CA from './pages/CA';
 
 function App() {
   const [user,setUser]=useState('')
@@ -45,7 +48,9 @@ function App() {
         </Switch>
         ):(
       <Switch>
-
+      <Route path="/ca" component={CA} />
+      <Route path="/polity" component={Polity} />
+      <Route path="/medieval" component={Medieval} />
       <Route path="/ancient" component={Ancient} />
      <Route path="/qna" component={QNA} />
      <Route path="/" component={Home} /> 

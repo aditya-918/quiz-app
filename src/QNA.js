@@ -6,26 +6,43 @@ const QNA = () => {
   const [question,setQuestion]=useState('');
   const [answer,setAnswer]=useState('');
   const [section,setSection]=useState('');
+  function submitQA(){
+    if(question!=='' && answer!=='' && section!==""){
+    db.collection('question-answers').add({
+      question:question,
+      answer:answer,
+      section:section,
+      
+    })
+    alert('Question added to the List')
+    setQuestion('')
+    setAnswer('')
+    setSection('')
+  }else{
+    alert('Fill all the fields');
+  }
+  }
   return (
     <div>Add Questions
         <div className="container">
         <h1>Add Questions</h1>
         <div className="input_qna">
-        <p>Q1</p> 
-        <input className="add_q" placeholder="Add Questions" />
-        <p>A1</p>
-        <input className="add_a" placeholder="Add Answer" />
+       
+        <input className="add_q" placeholder="Add Questions" value={question} onChange={event=> setQuestion(event.target.value)}/>
+     
+        <input className="add_a" placeholder="Add Answer" value={answer} onChange={event=> setAnswer(event.target.value)}/>
         {/* <button type="Submit">Add Another Question  </button> */}
         {/* <label for="cars">Choose a category:</label> */}
-  <select className="select_sections" id="cars">
-    <option value="volvo">Ancient</option>
-    <option value="saab">Medieval</option>
-    <option value="opel">CA</option>
-    <option value="audi">Polity</option>
+  <select className="select_sections" id="cars" value={section} onChange={event=> setSection(event.target.value)}>
+          <option value="">Select Section</option>
+          <option value="ancient">Ancient</option>
+          <option value="medieval">Medieval</option>
+          <option value="ca">CA</option>
+          <option value="polity">Polity</option>
   </select>
   <br />
         </div>
-        <button className="qna_submit" type="Submit">Submit</button>
+        <button className="qna_submit" onClick={submitQA}>Submit</button>
         </div>
     </div>
   )
