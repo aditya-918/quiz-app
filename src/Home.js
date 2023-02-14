@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import { auth } from './firebase';
 import './Home.css'
-
+import { useHistory } from "react-router";
+import Spinner from 'react-spinkit'
 const Home = () => {
-  const [user,setUser]=useState('')
+  const [user,setUser]=useState('');
+  const history = useHistory();
   useEffect(()=>{
     const unsubscribe=  auth.onAuthStateChanged((authUser)=>{
       if(authUser){
@@ -14,6 +16,7 @@ const Home = () => {
          }
       }else{
           setUser(null);
+          history.push('/login')
       }
     })
     return()=>{
@@ -26,6 +29,15 @@ const Home = () => {
 
   return (
     <div>
+      {!user?(
+         <div className="app_loading">
+         <div className="app_loading_container">
+ <Spinner name="ball-spin-fade-loader" color="blue" fadeIn="none"/>
+ </div>
+ </div>
+      ):(
+<>
+    
        <ul className="sidebar">
     <li><a href="/">Home</a></li>
     <li>Revise</li>
@@ -161,6 +173,8 @@ const Home = () => {
 </div>
 
   </div>
+</>
+)}
     </div>
     
   )

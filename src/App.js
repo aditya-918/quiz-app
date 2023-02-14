@@ -18,7 +18,7 @@ function App() {
     const unsubscribe=  auth.onAuthStateChanged((authUser)=>{
       if(authUser){
          setUser(authUser)
-         console.log()
+         
          if(authUser.displayName){
            //dont update username
          }
@@ -56,7 +56,7 @@ function App() {
      <Route path="/" component={Home} /> 
      {/*  empty slash of path is always at bottom */}
       </Switch>
-       )}
+       )} 
      </Router>
      
     </div>

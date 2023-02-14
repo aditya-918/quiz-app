@@ -203,3 +203,19 @@ label[for="sidebar-btn"] {
     width: 1200px;
     justify-content: space-between;
   }
+  
+  .app_loading{
+    display:grid;
+place-items:center;
+height:100vh;
+width:100%;
+}
+
+  .app_loading_container{
+    text-align:center;
+padding-bottom:100px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
