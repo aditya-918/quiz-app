@@ -1,0 +1,18 @@
+.qa_div{
+    color: black;
+}
+
+.dot_red{
+    
+        height: 50px;
+        width: 50px;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        
+        left: 680px;
+
+      
+      
+}

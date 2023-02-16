@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-
+import Spinner from 'react-spinkit'
 import { auth } from '../firebase'
 import './Login.css'
 
 function Login() {
     const history=useHistory()
+ 
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     function login(e){
@@ -17,8 +18,38 @@ function Login() {
         .catch((error)=>alert(error.message))
     }
  
+    const [user,setUser]=useState('');
+
+    useEffect(()=>{
+      const unsubscribe=  auth.onAuthStateChanged((authUser)=>{
+        if(authUser){
+           setUser(authUser)
+     
+           if(authUser.displayName){
+             //dont update username
+           }
+        }else{
+            setUser(null);
+            history.push('/login')
+        }
+      })
+      return()=>{
+        //Perform some Cleanup actions.
+        unsubscribe();
+      }
+    },[])
     return (
-        <div className="login">
+        <>
+
+{!user?(
+         <div className="app_loading">
+         <div className="app_loading_container">
+ <Spinner name="ball-spin-fade-loader" color="blue" fadeIn="none"/>
+ </div>
+ </div>
+      ):(
+<div className="login">
+
          <h2>Login</h2>
             <div className="login_form">
    
@@ -32,7 +63,9 @@ function Login() {
   <p>Do not have an account? <a className="a" href="/register"> Register</a></p>
    </form>
    </div>
-        </div>
+   </div>
+)}
+        </>
     )
 }
 
